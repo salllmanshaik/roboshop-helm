@@ -8,4 +8,4 @@ debug:
 
 dev:
 	git pull
-	for chart in frontend catalogue cart ; do make env=dev component=$$chart;done
+	for chart in frontend catalogue cart user shipping  payment; do make env=dev component=$$chart;done
