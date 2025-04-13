@@ -7,3 +7,11 @@ configmap_data:
   APP_GIT_URL: https://github.com/roboshop-devops-project-v3/shipping
   DB_USER: root
   DB_PASS: RoboShop@1
+
+schema:
+  enabled: true
+  jobs:
+    - master-data
+    - schema
+    - app-user
+  extention: sql

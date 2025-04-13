@@ -5,3 +5,9 @@ configmap_data:
   DB_TYPE: "mongo"
   APP_GIT_URL: "https://github.com/roboshop-devops-project-v3/catalogue"
   DB_HOST: "mongodb-dev.salman06.shop"
+
+schema:
+  enabled: true
+  jobs:
+    - master-data
+  extention: js
