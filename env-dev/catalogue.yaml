@@ -11,3 +11,4 @@ schema:
   jobs:
     - master-data
   extention: js
+  env:
