@@ -1,2 +1,4 @@
 service:
+  port: "8080"
+  containerport: "8080"
   type: ClusterIP

@@ -1,7 +1,7 @@
 component_name: catalogue
-service:
-  port: "8080"
-  containerPort: "8080"
 configmap_data:
   MONGO: "true"
   MONGO_URL: "mongodb://mongodb-dev.rdevopsb83.online:27017/catalogue"
+  DB_TYPE: "mongo"
+  APP_GIT_URL: "https://github.com/roboshop-devops-project-v3/catalogue"
+  DB_HOST: "mongodb-dev.salman06.shop"
