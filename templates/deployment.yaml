@@ -1,3 +1,26 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: {{ .Values.component_name }}
+#  labels:
+#    component: {{ .Values.component_name }}
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      component: {{ .Values.component_name }}
+#  template:
+#    metadata:
+#      labels:
+#        component: {{ .Values.component_name }}
+#    spec:
+#      containers:
+#        - name: {{ .Values.component_name }}
+#          image: 633788536644.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component_name }}:{{ .Values.imageTag }}
+#          envFrom:
+#            - configMapRef:
+#                name: {{ .Values.component_name }}
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -70,3 +93,76 @@ spec:
           envFrom:
             - configMapRef:
                 name: cart
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  labels:
+    component: shipping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: shipping
+  template:
+    metadata:
+      labels:
+        component: shipping
+    spec:
+      containers:
+        - name: shipping
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+          envFrom:
+            - configMapRef:
+                name: shipping
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  labels:
+    component: payment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: payment
+  template:
+    metadata:
+      labels:
+        component: payment
+    spec:
+      containers:
+        - name: payment
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/payment
+          envFrom:
+            - configMapRef:
+                name: payment
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user
+  labels:
+    component: user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: user
+  template:
+    metadata:
+      labels:
+        component: user
+    spec:
+      containers:
+        - name: payment
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+          envFrom:
+            - configMapRef:
+                name: user
