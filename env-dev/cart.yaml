@@ -1,4 +1,4 @@
-component_name: catalogue
+component_name: cart
 configmap_data:
   CATALOGUE_HOST: "catalogue"
   CATALOGUE_PORT: "8080"
