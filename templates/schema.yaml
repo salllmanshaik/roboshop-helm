@@ -12,7 +12,7 @@ spec:
         image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
         envFrom:
           - configMapRef:
-            name: {{ $.Values.component_name }}
+              name: {{ $.Values.component_name }}
         env:
           - name: SCHEMA_FILE
             value: db/{{ . }}.{{ $.Values.schema.extention }}
