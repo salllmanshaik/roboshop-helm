@@ -20,3 +20,53 @@ spec:
           envFrom:
             - configMapRef:
                 name: frontend
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+  labels:
+    component: catalogue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: catalogue
+  template:
+    metadata:
+      labels:
+        component: catalogue
+    spec:
+      containers:
+        - name: catalogue
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
+          envFrom:
+            - configMapRef:
+                name: catalogue
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+  labels:
+    component: cart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: cart
+  template:
+    metadata:
+      labels:
+        component: cart
+    spec:
+      containers:
+        - name: cart
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+          envFrom:
+            - configMapRef:
+                name: cart

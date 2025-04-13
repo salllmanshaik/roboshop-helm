@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.component_name }}
 spec:
-  type: ClusterIP
+  type: {{ .Values.service.type }}
   selector:
     component: {{ .Values.component_name }}
   ports:

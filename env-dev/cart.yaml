@@ -1,0 +1,12 @@
+component_name: catalogue
+service:
+  port: "8080"
+  containerPort: "8080"
+configmap_data:
+  CATALOGUE_HOST: "catalogue"
+  CATALOGUE_PORT: "8080"
+  REDIS_HOST: "redis-dev.salman06.shop"
+
+
+
+
