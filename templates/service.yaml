@@ -8,4 +8,4 @@ spec:
     component: {{ .Values.component_name }}
   ports:
     - port: {{ .Values.service.port }}
-      targetport: {{ .Values.service.containerport }}
+      targetport: {{ .Values.service.containerPort }}
