@@ -16,7 +16,7 @@ spec:
         env:
           - name: SCHEMA_FILE
             value: db/{{ . }}.{{ $.Values.schema.extention }}
-        restartPolicy: Never
+      restartPolicy: Never
   backoffLimit: 4
 {{- end }}
 {{ end }}
