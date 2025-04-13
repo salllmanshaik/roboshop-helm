@@ -1,1 +1,2 @@
-type: ClusterIP
+service:
+  type: ClusterIP
