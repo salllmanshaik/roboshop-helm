@@ -1,5 +1,6 @@
 {{ if .Values.schema.enabled }}
 {{ range .Values.schema.jobs }}
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -8,14 +9,14 @@ spec:
   template:
     spec:
       containers:
-      - name: schema-load
-        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-        envFrom:
-          - configMapRef:
-              name: {{ $.Values.component_name }}
-        env:
-          - name: SCHEMA_FILE
-            value: db/{{ . }}.{{ $.Values.schema.extention }}
+        - name: schema-load
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          envFrom:
+            - configMapRef:
+                name: {{ $.Values.component_name }}
+          env:
+            - name: SCHEMA_FILE
+              value: db/{{ . }}.{{ $.Values.schema.extention }}
       restartPolicy: Never
   backoffLimit: 4
 {{ end }}
