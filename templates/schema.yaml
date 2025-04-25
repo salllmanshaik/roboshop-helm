@@ -1,23 +1,18 @@
 {{ if .Values.schema.enabled }}
-{{ range .Values.schema.jobs }}
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ $.Values.component_name }}-{{ . }}
+  name: {{ .Values.component_name }}-schema
 spec:
   template:
     spec:
       containers:
         - name: schema-load
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          image: 533267148162.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component_name }}-schema:latest
           envFrom:
             - configMapRef:
-                name: {{ $.Values.component_name }}
-          env:
-            - name: SCHEMA_FILE
-              value: db/{{ . }}.{{ $.Values.schema.extention }}
+                name: {{ .Values.component_name }}
       restartPolicy: Never
   backoffLimit: 4
-{{ end }}
 {{ end }}
