@@ -1,6 +1,6 @@
 URL=$(kubectl get svc argocd-server -n argocd | grep argocd | awk '{print $4}')
 
-PASSWORD=$(kubectl get secrets -n argocd argocd-initial-admin-secrets -o json | jq .data.password|xargs base64 --decode)
+PASSWORD=$(kubectl get secrets -n argocd argocd-initial-admin-secret -o json | jq .data.password|xargs | base64 --decode)
 
 argocd login $URL --grcp-web --insecure --username admin --password $PASSWORD
 
