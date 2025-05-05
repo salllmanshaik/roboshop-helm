@@ -14,3 +14,7 @@ configmap_data:
   SHIPPING_PORT: "8080"
   PAYMENT_HOST: "payment"
   PAYMENT_PORT: "8080"
+
+ingress:
+  enabled: true
+  name: frontend-dev.salman06.shop
