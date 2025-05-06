@@ -10,6 +10,6 @@ argocd login argocd-${env}.salman06.shop --grpc-web --insecure --username admin 
 
 
 
-argocd app create ${component_name} --upsert --repo https://github.com/salllmanshaik/roboshop-helm --path . --dest-namespace default --dest-server https://kubernetes.default.svc --values env-${env}/${component_name}.yaml --helm-set imaggeTag=${imageTag}
+argocd app create ${component_name} --upsert --repo https://github.com/salllmanshaik/roboshop-helm --path . --dest-namespace default --dest-server https://kubernetes.default.svc --values env-${env}/${component_name}.yaml --helm-set imageTag=${imageTag}
 
 argocd app sync ${component_name}
