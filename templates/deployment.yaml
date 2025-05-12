@@ -34,5 +34,5 @@ spec:
           periodSeconds: 3
         {{- with .Values.resources }}
         resources:
-          {{ - toYaml . | nindent 12 }}
+          {{- toYaml . | nindent 12 }}
         {{- end }}
