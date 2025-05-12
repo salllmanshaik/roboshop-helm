@@ -32,7 +32,7 @@ spec:
             port: { { .Values.service.containerPort } }
           initialDelaySeconds: 30
           periodSeconds: 3
-        {{ - with .Values.resources }}
+        {{- with .Values.resources }}
         resources:
           {{ - toYaml . | nindent 12 }}
-        {{ - end }}
+        {{- end }}
