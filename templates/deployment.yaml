@@ -5,7 +5,7 @@ metadata:
   labels:
     component: {{ .Values.component_name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       component: {{ .Values.component_name }}
@@ -15,8 +15,24 @@ spec:
         component: {{ .Values.component_name }}
     spec:
       containers:
-        - name: roboshop-{{ .Values.component_name }}
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/{{ .Values.component_name }}
-          envFrom:
-            - configMapRef:
-                name: {{ .Values.component_name }}
+      - name: roboshop-{{ .Values.component_name }}
+        image: public.ecr.aws/w8x4g9h7/roboshop-v3/{{ .Values.component_name }}
+        envFrom:
+          - configMapRef:
+              name: {{ .Values.component_name }}
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: {{ .Values.service.containerPort }}
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: { { .Values.service.containerPort } }
+          initialDelaySeconds: 30
+          periodSeconds: 3
+        {{ - with .Values.resources }}
+        resources:
+          {{ - toYaml . | nindent 12 }}
+        {{ - end }}

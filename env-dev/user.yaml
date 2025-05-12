@@ -4,3 +4,11 @@ configmap_data:
   MONGO: "true"
   MONGO_URL: "mongodb://mongodb-dev.salman06.shop:27017/users"
   REDIS_URL: "redis://redis-dev.salman06.shop:6379"
+
+resources:
+  requests:
+    memory: "50Mi"
+    cpu: "150m"
+  limits:
+    memory: "100Mi"
+    cpu: "250m"

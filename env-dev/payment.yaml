@@ -8,3 +8,12 @@ configmap_data:
   AMQP_HOST: "rabbitmq-dev.salman06.shop"
   AMQP_USER: "roboshop"
   AMQP_PASS: "roboshop123"
+
+
+resources:
+  requests:
+    memory: "1200Mi"
+    cpu: "800m"
+  limits:
+    memory: "1500Mi"
+    cpu: "1050m"

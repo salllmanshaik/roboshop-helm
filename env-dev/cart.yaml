@@ -5,5 +5,10 @@ configmap_data:
   REDIS_HOST: "redis-dev.salman06.shop"
 
 
-
-
+resources:
+  requests:
+    memory: "50Mi"
+    cpu: "150m"
+  limits:
+    memory: "100Mi"
+    cpu: "250m"
