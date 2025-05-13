@@ -17,3 +17,7 @@ resources:
   limits:
     memory: "1500Mi"
     cpu: "1050m"
+
+
+extra_labels:
+  log_type: raw

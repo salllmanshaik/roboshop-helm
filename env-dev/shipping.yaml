@@ -24,3 +24,7 @@ resources:
   limits:
     memory: "3400Mi"
     cpu: "2400m"
+
+
+extra_labels:
+  log_type: raw
