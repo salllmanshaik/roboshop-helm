@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.component_name }}
+  annotations:
+    wave.pusher.com/update-on-config-change: "true"
   labels:
     component: {{ .Values.component_name }}
 spec:
