@@ -6,6 +6,7 @@ metadata:
     wave.pusher.com/update-on-config-change: "true"
   labels:
     component: {{ .Values.component_name }}
+    log_type: {{ .Values.extra_labels.log_type }}
 spec:
   strategy:
     rollingUpdate:
@@ -44,4 +45,3 @@ spec:
         resources:
           {{- toYaml . | nindent 12 }}
         {{- end }}
-
