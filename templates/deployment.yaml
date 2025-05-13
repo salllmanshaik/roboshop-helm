@@ -7,18 +7,24 @@ metadata:
   labels:
     component: {{ .Values.component_name }}
 spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       component: {{ .Values.component_name }}
+      log_type: {{ .Values.extra_labels.log_type }}
   template:
     metadata:
       labels:
         component: {{ .Values.component_name }}
+        log_type: {{ .Values.extra_labels.log_type }}
     spec:
       containers:
       - name: roboshop-{{ .Values.component_name }}
-        image: public.ecr.aws/w8x4g9h7/roboshop-v3/{{ .Values.component_name }}
+        image: 533267148162.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component_name }}:{{ .Values.imageTag }}
         envFrom:
           - SecretRef:
               name: {{ .Values.component_name }}
