@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    release: kube-prom-stack
+    component: {{ .Values.component_name }}
+  name: {{ .Values.component_name }}
+spec:
+  groups:
+    - name: {{ .Values.component_name }}.rules
+      rules:
+        - alert: {{ .Values.component_name }}-Pod-Down
+          expr: kube_pod_container_status_running{container="roboshop-{{ .Values.component_name }}"} < 1
+          for: 1m
+          keep_firing_for: 5m
+          labels:
+            severity: CRITICAL
+          annotations:
+            summary:  {{ .Values.component_name }}-Pod-Down
