@@ -1,7 +1,7 @@
 component_name: frontend
 service:
   port: "80"
-  containerPort: "80"
+  containerPort: "8080"
 
 configmap_data:
   CATALOGUE_HOST: "catalogue"
