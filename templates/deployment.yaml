@@ -18,6 +18,9 @@ spec:
       component: {{ .Values.component_name }}
       log_type: {{ .Values.extra_labels.log_type }}
   template:
+    volumes:
+      - emptyDir: {}
+        name: tmp
     metadata:
       labels:
         component: {{ .Values.component_name }}
