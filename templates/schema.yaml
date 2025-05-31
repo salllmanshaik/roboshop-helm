@@ -10,6 +10,8 @@ spec:
       containers:
         - name: schema-load
           image: 533267148162.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component_name }}-schema:latest
+          securityContext:
+            readOnlyRootFilesystem: true
           envFrom:
             - secretRef:
                 name: {{ .Values.component_name }}
