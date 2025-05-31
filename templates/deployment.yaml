@@ -18,14 +18,14 @@ spec:
       component: {{ .Values.component_name }}
       log_type: {{ .Values.extra_labels.log_type }}
   template:
-    volumes:
-      - emptyDir: {}
-        name: tmp
     metadata:
       labels:
         component: {{ .Values.component_name }}
         log_type: {{ .Values.extra_labels.log_type }}
     spec:
+      volumes:
+        - emptyDir: { }
+          name: tmp
       containers:
       - name: roboshop-{{ .Values.component_name }}
         image: 533267148162.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component_name }}:{{ .Values.imageTag }}
